@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Filosofia do Direito Interativa</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ========== TELA INICIAL ========== -->
+<div id="screen-home" class="screen active">
+  <div class="home-bg-orb orb-1"></div>
+  <div class="home-bg-orb orb-2"></div>
+  <div class="home-bg-orb orb-3"></div>
+
+  <header class="top-bar">
+    <span class="logo-text">⚖️ Lex</span>
+    <div class="top-bar-right">
+      <button class="btn-icon" id="btn-toggle-theme" title="Alternar tema">🌙</button>
+      <button class="btn-icon" id="btn-stats-home" title="Estatísticas">📊</button>
+    </div>
+  </header>
+
+  <main class="home-content">
+    <div class="hero-badge">Filosofia do Direito</div>
+    <h1 class="hero-title">Aprenda. Revise.<br><span class="gradient-text">Torne-se jurista.</span></h1>
+    <p class="hero-sub">11 módulos interativos · Flashcards · Quizzes · Simulado · Modo Desafio</p>
+
+    <!-- XP e nível -->
+    <div class="level-card" id="home-level-card">
+      <div class="level-icon" id="home-level-icon">🎓</div>
+      <div class="level-info">
+        <span class="level-label" id="home-level-label">Nível 1 — Estudante</span>
+        <div class="xp-bar-wrap">
+          <div class="xp-bar" id="home-xp-bar"></div>
+        </div>
+        <span class="xp-text" id="home-xp-text">0 XP</span>
+      </div>
+    </div>
+
+    <!-- Progresso geral -->
+    <div class="overall-progress">
+      <div class="progress-header">
+        <span>Progresso geral</span>
+        <span id="home-pct">0%</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="home-progress-fill"></div>
+      </div>
+    </div>
+
+    <button class="btn-primary btn-large" id="btn-start">Começar Estudos →</button>
+    <button class="btn-secondary" id="btn-simulate-home">🎯 Simulado Completo</button>
+    <button class="btn-secondary" id="btn-challenge-home">⚡ Modo Desafio</button>
+    <button class="btn-secondary" id="btn-mindmap-home">🗺️ Mapa Mental</button>
+
+    <!-- Medalhas -->
+    <div class="medals-row" id="home-medals"></div>
+  </main>
+</div>
+
+<!-- ========== MÓDULOS (LISTA) ========== -->
+<div id="screen-modules" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-modules">← Voltar</button>
+    <span class="top-bar-title">Módulos</span>
+    <button class="btn-icon" id="btn-review-quick">⚡ Revisão 5min</button>
+  </header>
+
+  <div class="modules-grid" id="modules-grid"></div>
+</div>
+
+<!-- ========== MÓDULO — RESUMO ========== -->
+<div id="screen-lesson" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-lesson">← Módulos</button>
+    <span class="top-bar-title" id="lesson-title">Módulo 1</span>
+    <span class="xp-badge" id="lesson-xp-badge">+0 XP</span>
+  </header>
+
+  <div class="lesson-tabs">
+    <button class="tab-btn active" data-tab="summary">📖 Resumo</button>
+    <button class="tab-btn" data-tab="flashcards">🃏 Flashcards</button>
+    <button class="tab-btn" data-tab="quiz">✏️ Quiz</button>
+  </div>
+
+  <!-- Resumo -->
+  <div class="tab-content active" id="tab-summary">
+    <div class="cards-container" id="summary-cards"></div>
+  </div>
+
+  <!-- Flashcards -->
+  <div class="tab-content" id="tab-flashcards">
+    <div class="flashcard-area">
+      <div class="flashcard-counter" id="fc-counter">1 / 5</div>
+      <div class="flashcard-wrap" id="flashcard-wrap">
+        <div class="flashcard" id="flashcard">
+          <div class="flashcard-front" id="fc-front"></div>
+          <div class="flashcard-back" id="fc-back"></div>
+        </div>
+      </div>
+      <p class="fc-hint">Toque no cartão para virar</p>
+      <div class="fc-nav">
+        <button class="btn-secondary" id="fc-prev">← Anterior</button>
+        <button class="btn-primary" id="fc-next">Próximo →</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quiz -->
+  <div class="tab-content" id="tab-quiz">
+    <div id="quiz-area"></div>
+  </div>
+</div>
+
+<!-- ========== SIMULADO ========== -->
+<div id="screen-simulate" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-simulate">← Voltar</button>
+    <span class="top-bar-title">Simulado Completo</span>
+    <span id="sim-counter" class="xp-badge">1/40</span>
+  </header>
+  <div id="simulate-area" class="simulate-area"></div>
+</div>
+
+<!-- ========== MODO DESAFIO ========== -->
+<div id="screen-challenge" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-challenge">← Voltar</button>
+    <span class="top-bar-title">⚡ Quem disse isso?</span>
+    <span id="challenge-score-badge" class="xp-badge">0 pts</span>
+  </header>
+  <div id="challenge-area" class="simulate-area"></div>
+</div>
+
+<!-- ========== MAPA MENTAL ========== -->
+<div id="screen-mindmap" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-mindmap">← Voltar</button>
+    <span class="top-bar-title">🗺️ Mapa Mental</span>
+  </header>
+  <div class="mindmap-container">
+    <div class="mindmap-tree" id="mindmap-tree"></div>
+  </div>
+  <div class="mindmap-tooltip" id="mindmap-tooltip"></div>
+</div>
+
+<!-- ========== ESTATÍSTICAS ========== -->
+<div id="screen-stats" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-stats">← Voltar</button>
+    <span class="top-bar-title">📊 Estatísticas</span>
+    <button class="btn-icon" id="btn-reset-stats" title="Resetar progresso">🔄</button>
+  </header>
+  <div class="stats-grid" id="stats-grid"></div>
+</div>
+
+<!-- ========== REVISÃO RÁPIDA ========== -->
+<div id="screen-review" class="screen">
+  <header class="top-bar">
+    <button class="btn-icon" id="btn-back-review">← Voltar</button>
+    <span class="top-bar-title">⚡ Revisão em 5 min</span>
+  </header>
+  <div id="review-area" class="simulate-area"></div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
